@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Show Todo - baseball</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Show Todo</h1>
+      <div th:object="${todo}">
+        <div>
+          <label>ID</label>
+          <p th:text="*{id}"></p>
+        </div>
+        <div>
+          <label>作成者</label>
+          <p th:text="*{name}"></p>
+        </div>
+        <div>
+          <label>タイトル</label>
+          <p th:text="*{title}"></p>
+        </div>
+        <div>
+          <label>内容</label>
+          <p th:text="*{details}"></p>
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-default" th:href="@{/todos/{id}/edit(id=*{id})}">編集</a>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-link" href="/todos">一覧画面へ</a>
+      </div>
+    </div>
+  </body>
+</html>

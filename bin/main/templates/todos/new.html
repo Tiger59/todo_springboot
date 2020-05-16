@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>New Todo - baseball</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>New Todo</h1>
+      <form th:action="@{/todos}" th:method="post">
+        <div class="form-group">
+          <label class="control-label">作成者</label>
+          <input class="form-control" type="text" name="name" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">タイトル</label>
+          <input class="form-control" type="text" name="title" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">内容</label>
+          <input class="form-control" type="text" name="details" />
+        </div>
+        <button class="btn btn-default" type="submit">作成</button>
+      </form>
+      <div class="pull-right">
+        <a class="btn btn-link" href="/todos">一覧画面へ</a>
+      </div>
+    </div>
+  </body>
+</html>

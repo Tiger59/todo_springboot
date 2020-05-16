@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Listing Todos - baseball</title>
+    <!-- ① -->
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Listing Todos</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>作成者</th>
+            <th>タイトル</th>
+            <th>内容</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="todo:${todos}" th:object="${todo}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{title}"></td>
+            <td th:text="*{details}"></td>
+            <td><a class="btn btn-default btn-xs" th:href="@{/todos/{id}(id=*{id})}">参照</a></td>
+            <td><a class="btn btn-default btn-xs" th:href="@{/todos/{id}/edit(id=*{id})}">編集</a></td>
+            <td>
+              <form th:action="@{/todos/{id}(id=*{id})}" th:method="delete">
+                <input class="btn btn-default btn-xs" type="submit" value="削除" />
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-default" href="/todos/new">新規作成</a>
+    </div>
+  </body>
+</html>
